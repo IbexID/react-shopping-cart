@@ -15,8 +15,7 @@ const Discount = (props) => {
                     if(e.target.value === '' || props.cartItems.length === 0){
                         props.setIsDiscountActive(false)
                         props.setDiscount('')
-                    } 
-                    console.log(props.discount) 
+                    }  
                 }}
                 placeholder='от 0 до 100' />
             </label>
@@ -35,8 +34,9 @@ const Discount = (props) => {
             className={cl.discount__button}
             onClick={(e) => {
                 e.preventDefault();
+                props.setDiscount('')
                 props.setIsDiscountActive(false)
-                props.setDiscount('')}
+            }
             }
             >Убрать скидки</button>
             </div>

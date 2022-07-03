@@ -23,7 +23,7 @@ const ItemInfo = (props) => {
 
             <div className={cl.itemInfo__state}>
             <p className={cl.itemInfo__quantity}>Количество товаров в корзине: {props.cartItems.length}</p>
-            {props.isDiscountActive
+            {(props.isDiscountActive && props.cartItems.length)
             ? <p className={cl.itemInfo__price}>Общая сумма: <span className={cl['itemInfo__price--strike']}>{price} ₽</span> {price - price*props.discount/100} ₽</p>
             : <p className={cl.itemInfo__price}>Общая сумма: {price} ₽</p>}
             
