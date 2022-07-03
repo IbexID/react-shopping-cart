@@ -3,16 +3,18 @@ import cl from './CartList.module.scss'
 import CartItem from './CartItem';
 
 const CartList = (props) => {
+    let isCartListEmpty = !Object.entries(props.cartItems).length
+    
    
     return (
         <div className={cl.cartList}>
             <h4 className={cl.cartList__title}>Список товаров</h4>
-            {!Object.entries(props.cartItems).length
+            {isCartListEmpty
             ? <p>Список пуст!</p>
             : <CartItem goodsNum={''} goodsName={''} goodsPrice={''} title={true}/>
             /*  */
             }
-            {!Object.entries(props.cartItems).length
+            {isCartListEmpty
             ? ''
             :
                 props.cartItems.map( (item, i) =>{
@@ -24,7 +26,11 @@ const CartList = (props) => {
                         goodsNum={item.goodsNum} 
                         goodsName={item.goodsName} 
                         goodsPrice={item.goodsPrice} 
-                        removeCartItem={props.removeCartItem}/>
+                        removeCartItem={props.removeCartItem}
+                        discount={props.discount} 
+                        setDiscount={props.setDiscount}
+                        isDiscountActive={props.isDiscountActive}
+                        setIsDiscountActive={props.setIsDiscountActive}/>
                     )
                 })
             }

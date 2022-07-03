@@ -15,7 +15,7 @@ const ItemForm = (props) => {
                     placeholder='Введите число'
                     value={props.goodsNum} 
                     onChange={(e => {
-                        if (e.target.value == Number(e.target.value)){
+                        if (e.target.value === String(Number(e.target.value))){
                             setGoodsNum(e.target.value) 
                         } 
                     })}
@@ -37,7 +37,7 @@ const ItemForm = (props) => {
                     <input 
                     value={props.goodsPrice} 
                     onChange={(e => {
-                        if (e.target.value == Number(e.target.value)){
+                        if (e.target.value === String(Number(e.target.value))){
                             setGoodsPrice(e.target.value) 
                         } 
                     } )}

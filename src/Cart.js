@@ -1,12 +1,14 @@
 import ItemForm from "./components/ItemForm";
 import CartList from "./components/CartList";
 import ItemInfo from "./components/ItemInfo";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 
 function Cart() {
   const [goodsNum, setGoodsNum] = useState('')
   const [goodsName, setGoodsName] = useState('')
   const [goodsPrice, setGoodsPrice] = useState('')
+  const [discount, setDiscount] = useState('')
+  const [isDiscountActive, setIsDiscountActive] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [message, setMessage] = useState('')
 
@@ -37,6 +39,12 @@ function Cart() {
     setCartItems(cartItems.filter( item => item.goodsNum !== cartItemGoodsNum || item.goodsName !== cartItemGoodsName || item.goodsPrice !== cartItemGoodsPrice))
   }
 
+  useEffect( () =>{
+    if(cartItems.length===0){
+      setIsDiscountActive(false)
+    }
+  },[cartItems])
+
   return (
     <div className="cart">
       <ItemForm 
@@ -52,10 +60,20 @@ function Cart() {
       />
       <div className="cart__info">
       
-      <ItemInfo cartItems={cartItems}/>
+      <ItemInfo 
+      cartItems={cartItems} 
+      discount={discount} 
+      setDiscount={setDiscount}
+      isDiscountActive={isDiscountActive}
+      setIsDiscountActive={setIsDiscountActive}
+      />
       </div>
     
       <CartList 
+      discount={discount} 
+      setDiscount={setDiscount}
+      isDiscountActive={isDiscountActive}
+      setIsDiscountActive={setIsDiscountActive}
       cartItems={cartItems} 
       removeCartItem={removeCartItem}
       />

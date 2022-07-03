@@ -18,7 +18,10 @@ const CartItem = (props) => {
                 <p className={cl.cartItem__count}>{props.number}.</p>
                 <p className={cl.cartItem__name}>{props.goodsName}</p>
                     <p className={cl.cartItem__number}>#{props.goodsNum}</p>
-                    <p className={cl.cartItem__price}>{props.goodsPrice} ₽</p>
+                    {props.isDiscountActive
+                    ? <p className={cl.cartItem__price}><span className={cl['cartItem__price--strike']}>{props.goodsPrice} ₽</span> {props.goodsPrice - props.goodsPrice*props.discount/100} ₽</p>
+                    : <p className={cl.cartItem__price}>{props.goodsPrice} ₽</p>
+                    }
                 
                 <div className={cl.cartItem__buttonWrapper}
                     onClick={(e) => {

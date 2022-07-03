@@ -12,6 +12,9 @@
     &__price{
         margin-left: 20px;
     }
+    &__price--strike{
+        text-decoration: line-through;
+    }
     &__title{
         text-align: left;
     }

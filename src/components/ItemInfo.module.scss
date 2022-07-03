@@ -9,4 +9,7 @@
     &__price{
     text-align: right;
     }
+    &__price--strike{
+        text-decoration: line-through;
+    }
 }
