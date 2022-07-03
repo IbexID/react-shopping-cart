@@ -15,10 +15,13 @@ function Cart() {
     const newItem = {
         goodsNum,
         goodsName,
-        goodsPrice
+        goodsPrice,
     }
     if (!goodsName.length || !goodsNum.length || !goodsPrice.length){
       setMessage('Заполните все поля')
+      setTimeout(() =>{
+        setMessage('')
+      }, 2000)
       return
     } else {
       setMessage('')
@@ -29,9 +32,9 @@ function Cart() {
     setGoodsPrice('');
   }
 
-  const removeCartItem = (cartItemGoodsNum) =>{
+  const removeCartItem = (cartItemGoodsNum, cartItemGoodsName, cartItemGoodsPrice) =>{
     
-    setCartItems(cartItems.filter( item => item.goodsNum !== cartItemGoodsNum))
+    setCartItems(cartItems.filter( item => item.goodsNum !== cartItemGoodsNum || item.goodsName !== cartItemGoodsName || item.goodsPrice !== cartItemGoodsPrice))
   }
 
   return (

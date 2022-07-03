@@ -9,18 +9,24 @@ const CartList = (props) => {
             <h4 className={cl.cartList__title}>Список товаров</h4>
             {!Object.entries(props.cartItems).length
             ? <p>Список пуст!</p>
-            : props.cartItems.map( (item, i) =>{
+            : <CartItem goodsNum={''} goodsName={''} goodsPrice={''} title={true}/>
+            /*  */
+            }
+            {!Object.entries(props.cartItems).length
+            ? ''
+            :
+                props.cartItems.map( (item, i) =>{
                 
-                return (
-                    <CartItem 
-                    key={i} 
-                    number={i+1} 
-                    goodsNum={item.goodsNum} 
-                    goodsName={item.goodsName} 
-                    goodsPrice={item.goodsPrice} 
-                    removeCartItem={props.removeCartItem}/>
-                )
-            })
+                    return (
+                        <CartItem 
+                        key={i} 
+                        number={i+1} 
+                        goodsNum={item.goodsNum} 
+                        goodsName={item.goodsName} 
+                        goodsPrice={item.goodsPrice} 
+                        removeCartItem={props.removeCartItem}/>
+                    )
+                })
             }
             
         </div>
